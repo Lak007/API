@@ -10,6 +10,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using NewZealandWalks.Data;
+using Microsoft.EntityFrameworkCore;
 
 namespace NewZealandWalks
 {
@@ -31,6 +33,7 @@ namespace NewZealandWalks
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "NewZealandWalks", Version = "v1" });
             });
+            services.AddDbContext<NewZealandWalksDbcontext>(options => options.UseSqlServer(Configuration.GetConnectionString("NewZealandWalksConnectionstring")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
