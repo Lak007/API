@@ -15,6 +15,8 @@ namespace NewZealandWalks.Mapping
             CreateMap<Region, RegionDto>().ReverseMap();
             CreateMap<AddRegionDto, Region>().ReverseMap();
             CreateMap<UpdateRegionDto, Region>().ReverseMap();
+            CreateMap<AddWalkRequest, Walks>().ReverseMap();
+            CreateMap<Walks, WalksDto>().ReverseMap();
         }
     }
 }
