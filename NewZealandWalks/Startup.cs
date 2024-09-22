@@ -12,6 +12,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using NewZealandWalks.Data;
 using Microsoft.EntityFrameworkCore;
+using NewZealandWalks.Repository;
+using AutoMapper;
+using NewZealandWalks.Mapping;
 
 namespace NewZealandWalks
 {
@@ -34,6 +37,8 @@ namespace NewZealandWalks
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "NewZealandWalks", Version = "v1" });
             });
             services.AddDbContext<NewZealandWalksDbcontext>(options => options.UseSqlServer(Configuration.GetConnectionString("NewZealandWalksConnectionstring")));
+            services.AddScoped<IRegionRepository, SqlRegionRepository>();
+            services.AddAutoMapper(typeof(AutoMapperProfile));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
